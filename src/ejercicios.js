@@ -1,9 +1,9 @@
 // ============================================
 // EDITOR DE IMÁGENES CON ÁLGEBRA MATRICIAL
 // ============================================
-// Nombre del estudiante: _________________
-// Fecha: _________________
-// Grupo: _________________
+// Nombre del estudiante: Angel Abraham Lugo Saenz
+// Fecha: 11/18/2025
+// Grupo:1-B
 
 const { PNG } = require('pngjs');
 const fs = require('fs');
