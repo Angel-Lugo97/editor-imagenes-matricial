@@ -375,9 +375,14 @@ function voltearHorizontal(matriz) {
  * const invertido = voltearVertical(matriz);
  */
 function voltearVertical(matriz) {
-  // TODO: Implementar volteo vertical
-  
-  return []; // REEMPLAZAR
+ // 1. Crear una nueva matriz para el resultado
+  const resultado = matriz.map(fila => [...fila]); // Crear una copia superficial de cada fila
+
+  // 2. Voltear las filas de la matriz
+  resultado.reverse(); // Usamos reverse() para invertir el orden de las filas
+
+  // 3. Retornar la matriz con las filas volteadas verticalmente
+  return resultado;
 }
 
 /**
