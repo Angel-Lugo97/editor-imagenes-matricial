@@ -24,6 +24,7 @@ Este repositorio contiene mi solución a la práctica de **Fundamentos de Progra
 
 ---
 
+
 ## 📊 Progreso de Ejercicios
 
 ### Sección 1: Variables y Tipos de Datos (10 pts)
