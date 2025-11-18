@@ -305,8 +305,7 @@ git log --oneline --graph --decorate
 -c28b3c0 feat: Ejercicio 1.1 solucionado
 -e58c3da feat: Cargar datos basicos
 -4c8c49a feat: prueba de funcionamiento
-
-
+---
 
 ## 🤝 Agradecimientos
 
