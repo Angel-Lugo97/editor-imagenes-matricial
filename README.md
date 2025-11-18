@@ -144,13 +144,38 @@ fundamentos-programacion-practica-1/
 ## 💡 Aprendizajes Clave
 
 ### Lo que más me costó
-- **la investigacion para resolver los ejercicios 4.2 a 5.5**:
+- **la investigacion para resolver los diferentes ejercicios**:
 
-Investigar sobre "for of", "loop" y matrices en programación implicó entender cómo funcionan las estructuras de repetición y cómo se manejan los arreglos, ya que fl "for of" es útil para iterar elementos en colecciones, mientras que las matrices son estructuras clave para almacenar y manipular datos en varios lenguajes. Para ello, revisé conceptos básicos de control de flujo y manipulación de datos.
+Validación de la estructura de los datos de entrada: Si la entrada no está bien estructurada (por ejemplo, si no es una matriz de objetos con propiedades r, g, b, y a), la función puede fallar. Manejar estos errores de forma adecuada o incluso verificar que la entrada tenga la forma correcta podría haber sido algo difícil de anticipar.
+
+Manejo de matrices bidimensionales: Si la matriz de entrada no está claramente definida o si no tienes experiencia con matrices de dos dimensiones, podría haber sido un desafío comprender cómo iterar sobre ellas correctamente, asegurando que cada fila y columna se recorra adecuadamente para aplicar el filtro a cada píxel.
+Asegurar el rango de valores para RGB: Las fórmulas para el filtro sepia podrían dar como resultado valores fuera del rango de 0 a 255. Asegurarte de que cada canal de color se mantenga dentro de este rango, usando Math.min() y Math.max(), puede ser confuso si no estás familiarizado con cómo se limitan estos valores en programación.
 ### Lo que más me gustó
-- **La investigacion metodos mas eficientes y simples que sustituyena los elementos basicos que he visto**:
+- **Fue siempre la misma investigacion para solucionar los problemas planteados por el profesor**:
 
-Usar métodos como .map(), .reverse() y .filter() es más eficiente que usar bucles tradicionales como "for of", ya que son más concisos y legibles. .map() transforma elementos, .reverse() invierte el orden de un arreglo y .filter() selecciona elementos según una condición, estos métodos son más declarativos, optimizados internamente y reducen la repetición de código. 
+// 1. Convertir a escala de grises para simplificar el cálculo
+const grises = []
+
+for (let y = 0; y < alto; y++) {
+  const filaGris = [];
+  for (let x = 0; x < ancho; x++) {
+    const p = matriz[y][x];
+    // Aplicar fórmula estándar para conversión a gris
+    const valorGris = Math.round(
+      0.299 * p.r +
+      0.587 * p.g +
+      0.114 * p.b
+    );
+    filaGris.push(valorGris);
+  }
+  grises.push(filaGris);
+}
+
+Simplicidad y claridad: La conversión a escala de grises es un paso fundamental cuando se trabaja con imágenes en el contexto de procesamiento de bordes. Esta parte del código lo hace de manera clara y sencilla, utilizando la fórmula estándar (ponderada) que tiene en cuenta la percepción humana de los colores. No hay necesidad de complicarse con transformaciones innecesarias.
+
+Uso de la fórmula estándar: La fórmula que se utiliza (0.299 * r + 0.587 * g + 0.114 * b) está basada en cómo los humanos perciben los colores, dando más peso al verde, luego al rojo y menos al azul. Esto asegura que la conversión a gris refleje de manera más precisa cómo veríamos una imagen en blanco y negro.
+
+Manejo eficiente de la matriz: La función recorre la imagen pixel por pixel, creando una nueva matriz de grises, que es exactamente lo que se necesita para detectar bordes de forma efectiva. El uso de Math.round asegura que los valores de los píxeles sean enteros, lo cual es ideal para los siguientes cálculos.
 
 ### Técnicas aplicadas
 - Uso de `for` loops para iteraciones
