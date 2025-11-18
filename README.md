@@ -189,20 +189,73 @@ Manejo eficiente de la matriz: La función recorre la imagen pixel por pixel, cr
 
 ### Función Favorita: Transponer Matriz
 ```javascript
-function transponer(matriz) {
-  const filas = matriz.length;
-  const columnas = matriz[0].length;
-  const transpuesta = [];
-  
-  for (let j = 0; j < columnas; j++) {
-    const fila = [];
-    for (let i = 0; i < filas; i++) {
-      fila.push(matriz[i][j]);
+function detectarBordes(matriz, umbral = 50) {
+   // Obtener dimensiones de la imagen
+  const alto = matriz.length;
+  const ancho = matriz[0]?.length || 0;
+
+  // 1. Convertir a escala de grises para simplificar el cálculo
+  const grises = []
+
+  for (let y = 0; y < alto; y++) {
+    const filaGris = [];
+    for (let x = 0; x < ancho; x++) {
+      const p = matriz[y][x];
+      // Aplicar fórmula estándar para conversión a gris
+      const valorGris = Math.round(
+        0.299 * p.r +
+        0.587 * p.g +
+        0.114 * p.b
+      );
+      filaGris.push(valorGris);
     }
-    transpuesta.push(fila);
+    grises.push(filaGris);
   }
-  
-  return transpuesta;
+
+  // Crea la matriz resultado para almacenar los bordes detectados
+  const resultado = [];
+
+  // 2. Recorre cada píxel y compara con vecinos para detectar cambios bruscos
+  for (let y = 0; y < alto; y++) {
+    const filaResultado = [];
+
+    for (let x = 0; x < ancho; x++) {
+      // Obtiene el valor del pixel central
+      const centro = grises[y][x];
+
+      // Para la última fila / última columna no hay derecha o abajo:
+      // los dejamos como negro (sin borde) para evitar errores de índice
+      if (x === ancho - 1 || y === alto - 1) {
+        filaResultado.push({ r: 0, g: 0, b: 0, a: 255 });
+        continue;
+      }
+
+      // Obtener valores de los píxeles vecinos (derecha y abajo)
+      const derecha = grises[y][x + 1];
+      const abajo   = grises[y + 1][x];
+
+      // Calcular diferencia máxima con sus vecinos derecha y abajo
+      const difDerecha = Math.abs(centro - derecha);
+      const difAbajo   = Math.abs(centro - abajo);
+      const diferencia = Math.max(difDerecha, difAbajo);
+
+      // Aplica umbral: si la diferencia es mayor al umbral, hay un borde
+      const valor = diferencia > umbral ? 255 : 0;
+
+      // Guarda píxel en blanco (borde) o negro (no borde)
+      filaResultado.push({
+        r: valor,
+        g: valor,
+        b: valor,
+        a: 255 // Canal alpha (transparencia) se mantiene igual
+      });
+    }
+
+    resultado.push(filaResultado);
+  }
+
+  // 3. Devuelve la imagen con bordes detectados
+  return resultado;
 }
 ```
 
