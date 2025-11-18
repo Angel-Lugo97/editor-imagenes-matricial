@@ -347,12 +347,16 @@ function convertirEscalaGrises(matriz) {
  * const espejo = voltearHorizontal(matriz);
  */
 function voltearHorizontal(matriz) {
-  // TODO: Implementar volteo horizontal
-  
-  // Pista: Puedes usar .reverse() en cada fila
-  // o construir manualmente invirtiendo el orden
-  
-  return []; // REEMPLAZAR
+ // 1. Crear una nueva matriz para el resultado
+  const resultado = matriz.map(fila => [...fila]); // Crear una copia superficial de cada fila
+
+  // 2. Voltear cada fila de la matriz
+  for (let i = 0; i < resultado.length; i++) {
+    resultado[i].reverse(); // Usamos reverse() para invertir cada fila horizontalmente
+  }
+
+  // 3. Retornar la matriz con las filas volteadas horizontalmente
+  return resultado;
 }
 
 /**
