@@ -17,7 +17,7 @@ if (!fs.existsSync(dirEntrada)) {
 
 // ============================================
 // IMAGEN 1: Pequeña 10x10 (para debug rápido)
-// ============================================
+// ============================================.
 function crearImagenPequeña() {
   const ancho = 10;
   const alto = 10;
