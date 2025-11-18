@@ -499,9 +499,39 @@ function mezclarImagenes(matriz1, matriz2, factor) {
  * const vintage = aplicarSepia(matriz);
  */
 function aplicarSepia(matriz) {
-  // TODO: Implementar filtro sepia
-  
-  return []; // REEMPLAZAR
+// 1. Crear una nueva matriz vacía para el resultado
+  const resultado = [];
+
+  // 2. Recorrer cada píxel de la matriz
+  for (let i = 0; i < matriz.length; i++) {
+    const filaSepia = [];
+    for (let j = 0; j < matriz[i].length; j++) {
+      const pixel = matriz[i][j];
+
+      // 3. Aplicar el filtro sepia a los canales r, g, b
+      const r = Math.round(0.393 * pixel.r + 0.769 * pixel.g + 0.189 * pixel.b);
+      const g = Math.round(0.349 * pixel.r + 0.686 * pixel.g + 0.168 * pixel.b);
+      const b = Math.round(0.272 * pixel.r + 0.534 * pixel.g + 0.131 * pixel.b);
+
+      // 4. Asegurar que los valores de los canales estén en el rango [0, 255]
+      const rFinal = Math.min(255, Math.max(0, r));
+      const gFinal = Math.min(255, Math.max(0, g));
+      const bFinal = Math.min(255, Math.max(0, b));
+
+      // 5. Guardar el nuevo píxel con el filtro sepia aplicado
+      filaSepia.push({
+        r: rFinal,
+        g: gFinal,
+        b: bFinal,
+        a: pixel.a // No se modifica el canal alpha
+      });
+    }
+    // 6. Agregar la fila con los píxeles sepia a la matriz de resultado
+    resultado.push(filaSepia);
+  }
+
+  // 7. Retornar la nueva matriz con el filtro sepia aplicado
+  return resultado;
 }
 
 /**
@@ -525,16 +555,38 @@ function aplicarSepia(matriz) {
  * const bordes = detectarBordes(matriz, 50);
  */
 function detectarBordes(matriz, umbral = 50) {
-  // TODO: Implementar detección de bordes
+ // 1. Convertir a escala de grises primero
+  const grises = convertirEscalaGrises(matriz);
   
-  // 1. Convertir a escala de grises primero
-  // const grises = convertirEscalaGrises(matriz);
-  
-  // 2. Para cada pixel (excepto bordes de la imagen):
-  //    - Comparar con pixel derecho y pixel inferior
-  //    - Si diferencia > umbral, marcar como borde
-  
-  return []; // REEMPLAZAR
+  // 2. Crear una nueva matriz para los bordes detectados
+  const bordes = [];
+
+  // 3. Recorremos cada píxel de la matriz (excepto los bordes de la imagen)
+  for (let i = 0; i < grises.length - 1; i++) { // No revisamos la última fila
+    const filaBordes = [];
+    for (let j = 0; j < grises[i].length - 1; j++) { // No revisamos la última columna
+      // 4. Obtener la intensidad de gris del píxel actual, píxel derecho y píxel inferior
+      const pixelActual = grises[i][j];
+      const pixelDerecho = grises[i][j + 1];
+      const pixelInferior = grises[i + 1][j];
+
+      // 5. Calcular la diferencia entre el píxel actual y sus vecinos
+      const diferenciaDerecha = Math.abs(pixelActual.r - pixelDerecho.r);
+      const diferenciaInferior = Math.abs(pixelActual.r - pixelInferior.r);
+
+      // 6. Si la diferencia es mayor que el umbral, marcar como borde (valor blanco)
+      if (diferenciaDerecha > umbral || diferenciaInferior > umbral) {
+        filaBordes.push({ r: 255, g: 255, b: 255, a: 255 }); // Borde blanco
+      } else {
+        filaBordes.push({ r: 0, g: 0, b: 0, a: 255 }); // No es borde (negro)
+      }
+    }
+    // 7. Agregar la fila de bordes a la matriz de bordes
+    bordes.push(filaBordes);
+  }
+
+  // 8. Retornar la matriz de bordes
+  return bordes;
 }
 
 // ============================================
