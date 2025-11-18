@@ -178,10 +178,10 @@ Uso de la fórmula estándar: La fórmula que se utiliza (0.299 * r + 0.587 * g 
 Manejo eficiente de la matriz: La función recorre la imagen pixel por pixel, creando una nueva matriz de grises, que es exactamente lo que se necesita para detectar bordes de forma efectiva. El uso de Math.round asegura que los valores de los píxeles sean enteros, lo cual es ideal para los siguientes cálculos.
 
 ### Técnicas aplicadas
-- Uso de `for` loops para iteraciones
-- Operador módulo `%` para determinar paridad
-- Arrays dinámicos con `.push()`
-- Bucles anidados para matrices
+- detectarBordes
+- nversión a escala de grises ponderada (para simplificar el cálculo de bordes)
+- Umbralización binaria (para marcar bordes según un umbral de diferencia)
+- Manejo de los límites de la imagen (evitar errores al procesar píxeles en los bordes de la matriz)
 
 ---
 
