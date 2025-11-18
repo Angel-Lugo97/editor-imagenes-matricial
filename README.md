@@ -289,32 +289,22 @@ git log --oneline --graph --decorate
 ```
 
 **Commits destacados:**
-- 7e9efb4 feat: Ejercicio 5.5 resuelto
-- bc071c5 feat: Ejercicio 5.4 resuelto
-- 278c20b feat: Ejercicio 5.3 resuelto
-- d084ff6 feat: Ejercicio 5.2 resuelto
-- 307898c feat: Ejercicio 5.1 resuelto
-- f7dee71 feat: Ejercicio 4.5 resuelto
-- f880e13 feat: Ejercicio 4.4 resuelto
-- 740c10f feat: Ejercicio 4.3 resuelto
-- 28435e9 feat: Ejercicio 4.2 resuelto
-- a9a56eb feat: Ejercicio 4.1 resuelto
-- 0b1f443 fix: Modificamos el error de par a tabla
-- 1216a92 feat: Ejercicio 3.4 resuelto
-- f6d310e feat: Ejercicio 3.3 resuelto
-- f58b5ae fix: Arreglo problema de sintaxis del ejercicio 3.2
-- 327986e feat: Ejercicio 3.2 resuelto
-- d7ef35a feat: Ejercicio 3.1 resuelto
-- 22b0292 feat: Ejercicio 2.4 resuelto
-- 926ead3 feat: Ejercicio 2.3 resuelto
-- 60e807d fix: Verificación del error en ejercicio 2.2
-- 50bb042 fix: Corrección del mensaje del return
-- 6a84187 feat: Ejercicio 2.2 resuelto
-- e29ae1e feat: Ejercicio 2.1 resuelto
-- 3718631 fix: Comprobación ejercicios 1.3 y 1.4 por sintaxis
-- 964ee06 fix: Arreglo del return del área en ejercicio 1.3
-- 2b4e0f9 fix: Arreglo de ejercicios 1, 2 y 3
-
+8aa6dff feat: Ejercicios solucionados, empezando a llenar los datos del README
+e9d97d5 feat: Ejercicio 4.3 solucionado
+cecd8a7 feat: Ejercicio 4.2 solucionado
+9526414 feat: Ejercicio 4.1 solucionado
+7aa2154 feat: Ejercicio 3.3 solucionado
+925af83 feat: Ejercicio 3.2 solucionado
+65725d5 feat: Ejercicio 3.1 solucionado
+f9793a3 feat: Ejercicio 2.3 solucionado
+c00517b feat: Ejercicio 2.2 solucionado
+a459dae feat: Ejercicio 2.1 solucionado
+bb3ae32 feat: Ejercicio 1.4 solucionado
+f970198 feat: Ejercicio 1.3 solucionado
+65d6189 feat: Ejercicio 1.2 solucionado
+c28b3c0 feat: Ejercicio 1.1 solucionado
+e58c3da feat: Cargar datos basicos
+4c8c49a feat: prueba de funcionamiento
 
 
 
