@@ -555,38 +555,74 @@ function aplicarSepia(matriz) {
  * const bordes = detectarBordes(matriz, 50);
  */
 function detectarBordes(matriz, umbral = 50) {
- // 1. Convertir a escala de grises primero
-  const grises = convertirEscalaGrises(matriz);
+   // TODO: Implementar detección de bordes
   
-  // 2. Crear una nueva matriz para los bordes detectados
-  const bordes = [];
+  // Obtener dimensiones de la imagen
+  const alto = matriz.length;
+  const ancho = matriz[0]?.length || 0;
 
-  // 3. Recorremos cada píxel de la matriz (excepto los bordes de la imagen)
-  for (let i = 0; i < grises.length - 1; i++) { // No revisamos la última fila
-    const filaBordes = [];
-    for (let j = 0; j < grises[i].length - 1; j++) { // No revisamos la última columna
-      // 4. Obtener la intensidad de gris del píxel actual, píxel derecho y píxel inferior
-      const pixelActual = grises[i][j];
-      const pixelDerecho = grises[i][j + 1];
-      const pixelInferior = grises[i + 1][j];
-
-      // 5. Calcular la diferencia entre el píxel actual y sus vecinos
-      const diferenciaDerecha = Math.abs(pixelActual.r - pixelDerecho.r);
-      const diferenciaInferior = Math.abs(pixelActual.r - pixelInferior.r);
-
-      // 6. Si la diferencia es mayor que el umbral, marcar como borde (valor blanco)
-      if (diferenciaDerecha > umbral || diferenciaInferior > umbral) {
-        filaBordes.push({ r: 255, g: 255, b: 255, a: 255 }); // Borde blanco
-      } else {
-        filaBordes.push({ r: 0, g: 0, b: 0, a: 255 }); // No es borde (negro)
-      }
+  // 1. Convertir a escala de grises para simplificar el cálculo
+  const grises = []
+  
+  for (let y = 0; y < alto; y++) {
+    const filaGris = [];
+    for (let x = 0; x < ancho; x++) {
+      const p = matriz[y][x];
+      // Aplicar fórmula estándar para conversión a gris
+      const valorGris = Math.round(
+        0.299 * p.r +
+        0.587 * p.g +
+        0.114 * p.b
+      );
+      filaGris.push(valorGris);
     }
-    // 7. Agregar la fila de bordes a la matriz de bordes
-    bordes.push(filaBordes);
+    grises.push(filaGris);
   }
 
-  // 8. Retornar la matriz de bordes
-  return bordes;
+  // Crea la matriz resultado para almacenar los bordes detectados
+  const resultado = [];
+
+  // Recorre cada píxel y compara con vecinos para detectar cambios bruscos
+  for (let y = 0; y < alto; y++) {
+    const filaResultado = [];
+
+    for (let x = 0; x < ancho; x++) {
+      // Obtiene el valor del pixel central
+      const centro = grises[y][x];
+
+      // Para la última fila / última columna no hay derecha o abajo:
+      // los dejamos como negro (sin borde) para evitar errores de índice
+      if (x === ancho - 1 || y === alto - 1) {
+        filaResultado.push({ r: 0, g: 0, b: 0, a: 255 });
+        continue;
+      }
+
+      // Obtener valores de los píxeles vecinos (derecha y abajo)
+      const derecha = grises[y][x + 1];
+      const abajo   = grises[y + 1][x];
+
+      // Calcular diferencia máxima con sus vecinos derecha y abajo
+      const difDerecha = Math.abs(centro - derecha);
+      const difAbajo   = Math.abs(centro - abajo);
+      const diferencia = Math.max(difDerecha, difAbajo);
+
+      // Aplica umbral: si la diferencia es mayor al umbral, hay un borde
+      const valor = diferencia > umbral ? 255 : 0;
+
+      //Guarda píxel en blanco (borde) o negro (no borde)
+      filaResultado.push({
+        r: valor,
+        g: valor,
+        b: valor,
+        a: 255 
+      });
+    }
+
+    resultado.push(filaResultado);
+  }
+
+  // Devuelve la imagen con bordes detectados
+  return resultado;
 }
 
 // ============================================
