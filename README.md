@@ -289,22 +289,22 @@ git log --oneline --graph --decorate
 ```
 
 **Commits destacados:**
-8aa6dff feat: Ejercicios solucionados, empezando a llenar los datos del README
-e9d97d5 feat: Ejercicio 4.3 solucionado
-cecd8a7 feat: Ejercicio 4.2 solucionado
-9526414 feat: Ejercicio 4.1 solucionado
-7aa2154 feat: Ejercicio 3.3 solucionado
-925af83 feat: Ejercicio 3.2 solucionado
-65725d5 feat: Ejercicio 3.1 solucionado
-f9793a3 feat: Ejercicio 2.3 solucionado
-c00517b feat: Ejercicio 2.2 solucionado
-a459dae feat: Ejercicio 2.1 solucionado
-bb3ae32 feat: Ejercicio 1.4 solucionado
-f970198 feat: Ejercicio 1.3 solucionado
-65d6189 feat: Ejercicio 1.2 solucionado
-c28b3c0 feat: Ejercicio 1.1 solucionado
-e58c3da feat: Cargar datos basicos
-4c8c49a feat: prueba de funcionamiento
+-8aa6dff feat: Ejercicios solucionados, empezando a llenar los datos del README
+-e9d97d5 feat: Ejercicio 4.3 solucionado
+-cecd8a7 feat: Ejercicio 4.2 solucionado
+-9526414 feat: Ejercicio 4.1 solucionado
+-7aa2154 feat: Ejercicio 3.3 solucionado
+-925af83 feat: Ejercicio 3.2 solucionado
+-65725d5 feat: Ejercicio 3.1 solucionado
+-f9793a3 feat: Ejercicio 2.3 solucionado
+-c00517b feat: Ejercicio 2.2 solucionado
+-a459dae feat: Ejercicio 2.1 solucionado
+-bb3ae32 feat: Ejercicio 1.4 solucionado
+-f970198 feat: Ejercicio 1.3 solucionado
+-65d6189 feat: Ejercicio 1.2 solucionado
+-c28b3c0 feat: Ejercicio 1.1 solucionado
+-e58c3da feat: Cargar datos basicos
+-4c8c49a feat: prueba de funcionamiento
 
 
 
