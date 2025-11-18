@@ -450,21 +450,36 @@ function rotar90Grados(matriz) {
  * const mezcla = mezclarImagenes(imagen1, imagen2, 0.5); // 50/50
  */
 function mezclarImagenes(matriz1, matriz2, factor) {
-  // TODO: Implementar mezcla de imágenes
-  
-  // 1. Verificar que tengan las mismas dimensiones
-  // const dims1 = obtenerDimensiones(matriz1);
-  // const dims2 = obtenerDimensiones(matriz2);
-  // if (dims1.filas !== dims2.filas || dims1.columnas !== dims2.columnas) {
-  //   throw new Error('Las imágenes deben tener el mismo tamaño');
-  // }
-  
-  // 2. Para cada pixel:
-  // r = r1 * (1 - factor) + r2 * factor
-  // g = g1 * (1 - factor) + g2 * factor
-  // b = b1 * (1 - factor) + b2 * factor
-  
-  return []; // REEMPLAZAR
+// 1. Verificar que tengan las mismas dimensiones
+  if (matriz1.length !== matriz2.length || matriz1[0].length !== matriz2[0].length) {
+    throw new Error('Las imágenes deben tener el mismo tamaño');
+  }
+
+  // 2. Crear una nueva matriz para almacenar el resultado
+  const resultado = [];
+
+  // 3. Mezclar los píxeles de ambas imágenes
+  for (let i = 0; i < matriz1.length; i++) {
+    const filaMezclada = [];
+    for (let j = 0; j < matriz1[i].length; j++) {
+      const pixel1 = matriz1[i][j];
+      const pixel2 = matriz2[i][j];
+
+      // Aplicar el factor de mezcla para cada canal (r, g, b)
+      const r = Math.round(pixel1.r * (1 - factor) + pixel2.r * factor);
+      const g = Math.round(pixel1.g * (1 - factor) + pixel2.g * factor);
+      const b = Math.round(pixel1.b * (1 - factor) + pixel2.b * factor);
+      const a = Math.round(pixel1.a * (1 - factor) + pixel2.a * factor);  // Mezclar el canal alpha también
+
+      // Guardar el nuevo píxel mezclado en la fila
+      filaMezclada.push({ r, g, b, a });
+    }
+    // Agregar la fila mezclada a la matriz de resultado
+    resultado.push(filaMezclada);
+  }
+
+  // 4. Retornar la matriz resultante con los píxeles mezclados
+  return resultado;
 }
 
 /**
