@@ -308,7 +308,7 @@ git log --oneline --graph --decorate
 
 
 
-
+.
 ## 🤝 Agradecimientos
 
 - **Profesor Jorge Javier Pedrozo Romero** por la estructura del curso y la práctica
