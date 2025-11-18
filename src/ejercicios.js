@@ -621,7 +621,7 @@ function detectarBordes(matriz, umbral = 50) {
     resultado.push(filaResultado);
   }
 
-  // Devuelve la imagen con bordes detectados
+  // Devuelve la imagen con bordes detectados.
   return resultado;
 }
 
