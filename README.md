@@ -334,6 +334,6 @@ Este proyecto es parte de las actividades académicas del **Tecnológico de Soft
 
 **⭐ Si te gustó este proyecto, dale una estrella ⭐**
 
-Hecho con 💙 por [Angel Abraham Lugo Saenz] - 2025.
+Hecho con 💙 por [Angel Abraham Lugo Saenz] - 2025
 
 </div>
