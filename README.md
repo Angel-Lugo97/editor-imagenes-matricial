@@ -83,7 +83,7 @@ Este repositorio contiene mi solución a la práctica de **Fundamentos de Progra
 └────────────────────────────────────────┘
 ```
 
-[![Tests](https://github.com/Angel-Lugo97/fundamentos-programacion-practica-1/actions/workflows/test.yml/badge.svg)]
+[![Tests](https://github.com/Angel-Lugo97/editor-imagenes-matricial.git/actions/workflows/test.yml/badge.svg)]
 
 
 
